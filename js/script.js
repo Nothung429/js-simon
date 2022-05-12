@@ -2,10 +2,10 @@
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 //------ FUNCTIONS ------//
-function getRandomNumber (min , max) {
+function getRandomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function listRandomNumber (min, max , nElement) {
+function listRandomNumber (min, max, nElement) {
     const numberlist = [];
     for (let i = 0 ; i < nElement ; i++) {
         numberlist.push(getRandomNumber (min , max));
@@ -27,9 +27,7 @@ function getMatch (firstArray, secondArray) {
 //------ MAIN ------//
 // 1. visualizzare in pagina 5 numeri casuali
 const simonSays = listRandomNumber(1,100,5);
-const simonArray = [];
-simonArray.push(simonSays);
-console.log(simonArray);
+console.log(simonSays);
 const numbers = document.querySelector(".numbers-list");
 let number = document.querySelector(".number");
 number.innerText = simonSays;
@@ -42,24 +40,26 @@ const hideNumbers = setTimeout(
         number.style.display = "none";
     }, 1000
 );
-const playerArray = [];
+const playerSays = [];
 const gameTimer = setTimeout(
     function(){
         for (let i= 0 ; i < 5 ; i++) {
             let simonAsk = Number(prompt("Inserisci un numero"));
             console.log(simonAsk);
-            playerArray.push(simonAsk);
+            playerSays.push(simonAsk);
         };
-        console.log(playerArray);
+        console.log(playerSays);
+        console.log(simonSays);
     }, 2000
 );
 
 // 5. una volta che l'utente ha inserito i numeri controllo se corrispondono a quelli del Simon Says
 const result = setTimeout( 
     function() {
-        const verify = getMatch(simonArray,playerArray);
+        verify = getMatch(simonSays,playerSays);
         console.log(verify);
-    }, 10000 
+    }, 5000
 );
 
 // 6. infine mostro il punteggio (quanti numeri ha ricordato e quali)
+
