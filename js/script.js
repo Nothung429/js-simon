@@ -21,7 +21,7 @@ function getMatch (firstArray, secondArray) {
             }
         }
     }
-    alert(matches);
+    return matches;
 }
 
 //------ MAIN ------//
@@ -35,13 +35,14 @@ number.innerText = simonSays;
 // 2. far partire un timer di 30 secondi
 // 3. finito il timer, nascondo i numeri che ho mostrato all'utente
 // 4. adesso chiedo all'utente di inserire 5 numeri uno alla volta
-const hideNumbers = setTimeout( 
+setTimeout( 
     function () {
         number.style.display = "none";
-    }, 1000
+    }, 10000    
 );
+
 const playerSays = [];
-const gameTimer = setTimeout(
+setTimeout(
     function(){
         for (let i= 0 ; i < 5 ; i++) {
             let simonAsk = Number(prompt("Inserisci un numero"));
@@ -50,16 +51,19 @@ const gameTimer = setTimeout(
         };
         console.log(playerSays);
         console.log(simonSays);
-    }, 2000
+    }, 11000
 );
 
 // 5. una volta che l'utente ha inserito i numeri controllo se corrispondono a quelli del Simon Says
-const result = setTimeout( 
+// 6. infine mostro il punteggio (quanti numeri ha ricordato e quali)
+const score = document.querySelector(".score");
+const scoreNumbers = document.querySelector(".score-numbers");
+setTimeout(
     function() {
         verify = getMatch(simonSays,playerSays);
-        console.log(verify);
-    }, 5000
+        score.innerHTML = `Il tuo punteggio è : ${verify.length}`;
+        scoreNumbers.innerHTML = `I numeri che hai indovinato sono : ${verify}`;
+        score.style.display = "block";
+        scoreNumbers.style.display = "block";
+    }, 12000
 );
-
-// 6. infine mostro il punteggio (quanti numeri ha ricordato e quali)
-
