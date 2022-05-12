@@ -34,7 +34,7 @@ number.innerText = simonSays;
 setTimeout( 
     function () {
         number.style.display = "none";
-    }, 1000
+    }, 10000
 );
 
 const playerSays = [];
@@ -48,7 +48,7 @@ setTimeout(
                 playerSays.push(simonAsk);
             }
         } while (playerSays.length < 8);
-    }, 1100
+    }, 11000
 );
 
 // 5. una volta che l'utente ha inserito i numeri controllo se corrispondono a quelli del Simon Says
@@ -62,5 +62,5 @@ setTimeout(
         scoreNumbers.innerHTML = `I numeri corrispondenti sono : ${verify}`;
         score.style.display = "block";
         scoreNumbers.style.display = "block";
-    }, 1200
+    }, 12000
 );
