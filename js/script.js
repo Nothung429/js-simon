@@ -23,8 +23,7 @@ function getMatch (firstArray, secondArray) {
 
 //------ MAIN ------//
 // 1. visualizzare in pagina 5 numeri casuali
-const simonSays = listRandomNumber(1,100,5);
-console.log(simonSays);
+const simonSays = listRandomNumber(1,100,8);
 const numbers = document.querySelector(".numbers-list");
 let number = document.querySelector(".number");
 number.innerText = simonSays;
@@ -35,20 +34,21 @@ number.innerText = simonSays;
 setTimeout( 
     function () {
         number.style.display = "none";
-    }, 10000    
+    }, 1000
 );
 
 const playerSays = [];
 setTimeout(
     function(){
-        for (let i= 0 ; i < 5 ; i++) {
-            let simonAsk = Number(prompt("Inserisci un numero"));
-            console.log(simonAsk);
-            playerSays.push(simonAsk);
-        };
-        console.log(playerSays);
-        console.log(simonSays);
-    }, 11000
+        do {
+            const simonAsk = Number(prompt("Inserisci i numeri che hai visto"));
+            if (playerSays.includes(simonAsk)) {
+                alert("Numero già inserito")
+            } else {
+                playerSays.push(simonAsk);
+            }
+        } while (playerSays.length < 8);
+    }, 1100
 );
 
 // 5. una volta che l'utente ha inserito i numeri controllo se corrispondono a quelli del Simon Says
@@ -59,8 +59,8 @@ setTimeout(
     function() {
         verify = getMatch(simonSays,playerSays);
         score.innerHTML = `Il tuo punteggio è : ${verify.length}`;
-        scoreNumbers.innerHTML = `I numeri che hai indovinato sono : ${verify}`;
+        scoreNumbers.innerHTML = `I numeri corrispondenti sono : ${verify}`;
         score.style.display = "block";
         scoreNumbers.style.display = "block";
-    }, 12000
+    }, 1200
 );
