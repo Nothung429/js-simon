@@ -22,6 +22,18 @@ h1 {
     width: 1200px;
     margin: auto;
 }
+.btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#start {
+    border-radius: 20px;
+    color: #fff;
+    background-color: darkblue;
+    padding: 10px 20px;
+    font-size: 28px;
+}
 .numbers-list {
     width: 100%;
     background-color: #fff;

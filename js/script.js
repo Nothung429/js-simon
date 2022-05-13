@@ -23,44 +23,48 @@ function getMatch (firstArray, secondArray) {
 
 //------ MAIN ------//
 // 1. visualizzare in pagina 5 numeri casuali
-const simonSays = listRandomNumber(1,100,8);
-const numbers = document.querySelector(".numbers-list");
-let number = document.querySelector(".number");
-number.innerText = simonSays;
-
 // 2. far partire un timer di 30 secondi
 // 3. finito il timer, nascondo i numeri che ho mostrato all'utente
 // 4. adesso chiedo all'utente di inserire 5 numeri uno alla volta
-setTimeout( 
-    function () {
-        number.style.display = "none";
-    }, 10000
-);
-
-const playerSays = [];
-setTimeout(
-    function(){
-        do {
-            const simonAsk = Number(prompt("Inserisci i numeri che hai visto"));
-            if (playerSays.includes(simonAsk)) {
-                alert("Numero già inserito")
-            } else {
-                playerSays.push(simonAsk);
-            }
-        } while (playerSays.length < 8);
-    }, 11000
-);
-
 // 5. una volta che l'utente ha inserito i numeri controllo se corrispondono a quelli del Simon Says
 // 6. infine mostro il punteggio (quanti numeri ha ricordato e quali)
-const score = document.querySelector(".score");
-const scoreNumbers = document.querySelector(".score-numbers");
-setTimeout(
-    function() {
-        verify = getMatch(simonSays,playerSays);
-        score.innerHTML = `Il tuo punteggio è : ${verify.length}`;
-        scoreNumbers.innerHTML = `I numeri corrispondenti sono : ${verify}`;
-        score.style.display = "block";
-        scoreNumbers.style.display = "block";
-    }, 12000
+const btnStart = document.getElementById("start");
+btnStart.addEventListener ("click" , 
+    function () {
+        const simonSays = listRandomNumber(1,100,8);
+        const numbers = document.querySelector(".numbers-list");
+        let number = document.querySelector(".number");
+        number.innerText = simonSays;
+        setTimeout( 
+            function () {
+                number.style.display = "none";
+            }, 10000
+        );
+        
+        const playerSays = [];
+        setTimeout(
+            function(){
+                do {
+                    const simonAsk = Number(prompt("Inserisci i numeri che hai visto"));
+                    if (playerSays.includes(simonAsk)) {
+                        alert("Numero già inserito")
+                    } else {
+                        playerSays.push(simonAsk);
+                    }
+                } while (playerSays.length < 8);
+            }, 11000
+        );
+
+        const score = document.querySelector(".score");
+        const scoreNumbers = document.querySelector(".score-numbers");
+        setTimeout(
+            function() {
+                verify = getMatch(simonSays,playerSays);
+                score.innerHTML = `Il tuo punteggio è : ${verify.length}`;
+                scoreNumbers.innerHTML = `I numeri corrispondenti sono : ${verify}`;
+                score.style.display = "block";
+                scoreNumbers.style.display = "block";
+            }, 12000
+        );
+    }
 );
